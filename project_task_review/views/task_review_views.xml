@@ -1,0 +1,48 @@
+<odoo>
+    <record id="view_task_review_form" model="ir.ui.view">
+        <field name="name">task.review.form</field>
+        <field name="model">task.review</field>
+        <field name="arch" type="xml">
+            <form string="Task Review">
+                <sheet>
+                    <group>
+                        <field name="task_id"/>
+                        <field name="review_date"/>
+                        <field name="reviewer_id"/>
+                        <field name="score"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_task_review_tree" model="ir.ui.view">
+        <field name="name">task.review.tree</field>
+        <field name="model">task.review</field>
+        <field name="arch" type="xml">
+            <tree string="Task Reviews">
+                <field name="review_date"/>
+                <field name="task_id"/>
+                <field name="reviewer_id"/>
+                <field name="score"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_task_review_root"
+              name="Task Reviews"
+              parent="project.menu_main_pm"
+              sequence="40"/>
+
+    <record id="action_task_review" model="ir.actions.act_window">
+        <field name="name">Task Reviews</field>
+        <field name="res_model">task.review</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_task_review"
+              name="All Reviews"
+              parent="menu_task_review_root"
+              action="action_task_review"/>
+</odoo>
